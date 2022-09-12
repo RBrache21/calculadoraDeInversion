@@ -23,7 +23,7 @@ Esto le dara acceso a el administrador de django.
 
 - python manage.py runserver
 
-### 8. Acceder al administrador y agregar uno o varios usuarios y uno o varios productos. 
+### 8. Acceder al administrador y agregar uno o varios usuarios y uno o varios productos. (NECESARIO)
 
 - Agregar usuario: Para agregar un usuario debe dar click a Users que se encuentra  debajo de API. 
 
@@ -32,6 +32,10 @@ Esto le dara acceso a el administrador de django.
 - Agregar un producto: Para agregar un producto da click a productos --> add producto --> llenar campos correspondientes
 
 <img width="1500" alt="image" src="https://user-images.githubusercontent.com/38991514/189585696-ea028751-380a-40f6-8b0f-16c064f79632.png">
+
+### (OPCIONAL) 9. Agregar días Feriados
+- Para agregar un dia feriado da click en feriados --> add feriado --> llenar campo de fecha
+
 
 Ya estamos listos para configurar el front end.
 
