@@ -1,0 +1,84 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-4">
+      <h3>Calculadora de Inversión</h3>
+      <form
+        name="form"
+        #form="ngForm"
+        (ngSubmit)="form.form.valid && onSubmit()"
+        novalidate
+      >
+        <div class="form-group mb-2">
+          <label class="mb-2" for="producto">Producto</label>
+          <select
+            class="form-select"
+            name="producto"
+            [(ngModel)]="model.producto"
+            #producto="ngModel"
+            required
+          >
+            <option class="dropdown-item" value="" disabled selected>
+              Seleccione un producto
+            </option>
+            <option *ngFor="let producto of productos" [value]="producto.id">
+              {{ producto.id }}
+            </option>
+          </select>
+          <div
+            *ngIf="producto.invalid && (producto.dirty || producto.touched)"
+            class="alert alert-danger"
+          >
+            <div *ngIf="producto.errors?.['required']">
+              Producto is required
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group mb-2">
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="enReinversion"
+              [(ngModel)]="model.enReinversion"
+              #enReinversion="ngModel"
+            />
+            <label class="form-check-label" for="enReinversion">
+              En reinversión
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group mb-4">
+          <label class="mb-2" for="plazo">Plazo</label>
+          <input
+            type="number"
+            class="form-control"
+            name="plazo"
+            [(ngModel)]="model.plazo"
+            #plazo="ngModel"
+            required
+          />
+          <div
+            *ngIf="plazo.invalid && (plazo.dirty || plazo.touched)"
+            class="alert alert-danger"
+          >
+            <div *ngIf="plazo.errors?.['required']">Plazo is required</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Calcular</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="">
+      <pre>{{ calculoInversion | json }}</pre>
+    </div>
+  </div>
+</div>
