@@ -40,8 +40,10 @@ def crearInversion(request):
         else:
             fechaInicio = inversion.fechaCreacion + datetime.timedelta(days=producto.cantidadDiasHoraOperativa)
 
-        while fechaInicio.weekday() > 4:
+        while fechaInicio.weekday() > 4 or Feriado.objects.filter(fecha=fechaInicio).exists():
             fechaInicio = fechaInicio + datetime.timedelta(days=1)
+
+        
 
     else:
         if inversion.enReinversion:
@@ -49,12 +51,12 @@ def crearInversion(request):
         else:
             fechaInicio = fechaInicio + datetime.timedelta(days=producto.cantidadDiasHoraNoOperativa)
         
-        while fechaInicio.weekday() > 4:
+        while fechaInicio.weekday() > 4 or Feriado.objects.filter(fecha=fechaInicio).exists():
             fechaInicio = fechaInicio + datetime.timedelta(days=1)
     
 
     fechaFin = fechaInicio + datetime.timedelta(days=inversion.plazo)
-    while fechaFin.weekday() > 4:
+    while fechaFin.weekday() > 4 or Feriado.objects.filter(fecha=fechaFin).exists():
         fechaFin = fechaFin + datetime.timedelta(days=1)
     
     plazoReal = (fechaFin - fechaInicio).days
