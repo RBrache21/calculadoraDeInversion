@@ -1,1 +1,3 @@
 # calculadoraDeInversion
+
+Pasos a seguir
