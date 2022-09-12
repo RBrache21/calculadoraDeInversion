@@ -26,4 +26,9 @@ class User(models.Model):
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
+
+class Feriado(models.Model):
+    id = models.AutoField(primary_key=True)
+    fecha = models.DateField()
+
    

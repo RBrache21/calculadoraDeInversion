@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Producto, Inversion, User
+from .models import Producto, Inversion, User, Feriado
 
 class ProductoSerializer(serializers.ModelSerializer):
     class Meta:
@@ -16,3 +16,7 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ('id', 'username', 'email', 'password')
       
+class FeriadoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Feriado
+        fields = ('id', 'fecha')

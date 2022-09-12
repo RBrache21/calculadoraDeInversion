@@ -1,7 +1,7 @@
 import datetime
 from rest_framework import viewsets
-from backend.api.serializers import ProductoSerializer, InversionSerializer, UserSerializer
-from .models import Producto, Inversion, User
+from backend.api.serializers import ProductoSerializer, InversionSerializer, UserSerializer, FeriadoSerializer
+from .models import Producto, Inversion, User, Feriado
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
@@ -18,6 +18,9 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
+class FeriadoViewSet(viewsets.ModelViewSet):
+    queryset = Feriado.objects.all()
+    serializer_class = FeriadoSerializer
 
 @api_view(['POST'])
 def crearInversion(request):
