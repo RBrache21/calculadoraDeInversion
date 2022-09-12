@@ -10,7 +10,10 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   constructor(private appService: AppService, private router: Router) {}
 
-  model: any = {};
+  model = {
+    email: '',
+    password: '',
+  };
 
   ngOnInit(): void {}
 
@@ -20,7 +23,11 @@ export class LoginComponent implements OnInit {
       if (data.access) {
         this.router.navigate(['/add-investment']);
       } else {
-        alert(data.message);
+        if (data.message) {
+          alert(data.message);
+        } else {
+          alert(data.error);
+        }
       }
     });
   };
